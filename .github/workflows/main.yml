@@ -74,18 +74,18 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./Linux Build/DeGourou.bin
-          asset_name: DeGourou
+          asset_name: DeGourou-linux
           asset_content_type: application/gzip
             
-      # - name: upload darwin artifact
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: ./bin/azblogfilter.darwin-amd64.tar.gz
-      #     asset_name: azblogfilter.darwin-amd64.tar.gz
-      #     asset_content_type: application/gzip
+      - name: upload darwin artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./macOS Build/DeGourou.bin
+          asset_name: DeGourou-macOS.bin
+          asset_content_type: application/gzip
 
       - name: upload windows artifact
         uses: actions/upload-release-asset@v1
@@ -94,5 +94,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./Windows Build/DeGourou.exe
-          asset_name: DeGourou.exe
+          asset_name: DeGourou-windows.exe
           asset_content_type: application/zip
