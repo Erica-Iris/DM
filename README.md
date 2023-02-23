@@ -17,14 +17,14 @@
 
 1. Clone the repositary or Downlaod zip file and extract it
 2. Install requirements using pip
-3. Run "main" file
+3. Run "DeGourou" file
 
 
 ```
 git clone https://github.com/bipinkrish/DeGourou.git
 cd DeGourou
 pip install -r requirements.txt
-python main.py
+python DeGourou.py
 ```
 
 ---
