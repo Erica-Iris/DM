@@ -43,8 +43,9 @@ jobs:
             build/*.exe
             build/*.bin
             build/*.app/**/*
-  
+
   release:
+    needs: build
     permissions: write-all
     name: Release
     runs-on: ubuntu-latest
