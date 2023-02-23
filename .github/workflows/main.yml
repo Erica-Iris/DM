@@ -63,7 +63,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: Latest Release
-          tag_name: Latest Release
+          tag_name: LatestRelease
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
