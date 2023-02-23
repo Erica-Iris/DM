@@ -32,5 +32,10 @@ else:
     print("Not in supported file formats")
     print()
     exit(1)
+
+from os import remove, rename
+remove(enrcyptedFile)
+rename(decryptedFile,enrcyptedFile)
+decryptedFile = enrcyptedFile
 print(decryptedFile)
 print()

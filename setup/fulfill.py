@@ -47,7 +47,9 @@ def download(replyData):
     try: 
         metadata_node = adobe_fulfill_response.find("./%s/%s/%s" % (adNS("fulfillmentResult"), adNS("resourceItemInfo"), adNS("metadata")))
         book_name = metadata_node.find("./%s" % (adDC("title"))).text
-        book_name = ''.join([c for c in book_name if c not in '\/:*?"<>|'])
+        # removing illegal characters for filename
+        book_name = book_name.replace(":","-")
+        book_name = ''.join([c for c in book_name if c not in '\/*?"<>|'])
     except: 
         book_name = "Book"
     
