@@ -1,6 +1,6 @@
 # DeGourou (DeDRM + libgourou)
 
-### Automate the process of getting decrypted book from [InternetArchive](https://archive.org/) without the need for [Adobe Digital Editions](https://www.adobe.com/in/solutions/ebook/digital-editions/download.html) and [Calibre](https://calibre-ebook.com/) with DeDRM Plugins.
+### Automate the process of getting decrypted ebook from [InternetArchive](https://archive.org/) without the need for [Adobe Digital Editions](https://www.adobe.com/in/solutions/ebook/digital-editions/download.html) and [Calibre](https://calibre-ebook.com/) with DeDRM Plugins.
 
 ---
 
@@ -14,6 +14,25 @@
 ---
 
 ## Guide
+
+*It only asks for login the first time if no files are misssing, so do not delete any files that are not books*
+### For Normal Users
+
+1. Download binary file according to your operating system from [Releases Section](https://github.com/bipinkrish/DeGourou/releases)
+2. Run the binary according to operating system
+
+    A. Windows user's can just simply run the .exe
+
+    B. Linux user's need to change the file permission and then can run
+
+    ```
+    chmod 777 DeGourou-linux
+    ./DeGourou-linux
+    ```
+
+    C. MacOS user's accordingly
+
+### For Developers
 
 1. Clone the repositary or Downlaod zip file and extract it
 2. Install requirements using pip
@@ -35,5 +54,5 @@ This project is highly inspired from these projects, thanks to them
 
 1. [DeDrm](https://github.com/apprenticeharper/DeDRM_tools) tools for ebooks
 2. [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools)
-3. [libgourou](https://indefero.soutade.fr//p/libgourou/) is a free implementation of Adobe's ADEPT protocol]
+3. [libgourou](https://indefero.soutade.fr//p/libgourou/) is a free implementation of Adobe's ADEPT protocol
 4. [ACSM Input plugin + standalone](https://github.com/Leseratte10/acsm-calibre-plugin)
