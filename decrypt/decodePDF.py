@@ -13,7 +13,7 @@
 Decrypts Adobe ADEPT-encrypted PDF files.
 """
 
-KEYPATH = "adobekey.der"
+from decrypt.params import KEYPATH
 __license__ = 'GPL v3'
 __version__ = "10.0.4"
 

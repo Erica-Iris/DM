@@ -11,7 +11,7 @@
 Decrypt Adobe Digital Editions encrypted ePub books.
 """
 
-KEYPATH = "adobekey.der"
+from decrypt.params import KEYPATH
 __license__ = 'GPL v3'
 __version__ = "8.0"
 
@@ -20,7 +20,6 @@ import os
 import traceback
 import base64
 import zlib
-import zipfile
 from zipfile import ZipInfo, ZipFile, ZIP_STORED, ZIP_DEFLATED
 from decrypt.zeroedzipinfo import ZeroedZipInfo
 from contextlib import closing

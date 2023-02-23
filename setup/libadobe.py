@@ -40,10 +40,7 @@ from oscrypto.asymmetric import dump_certificate, dump_private_key
 VAR_ACS_SERVER_HTTP = "http://adeactivate.adobe.com/adept"
 VAR_ACS_SERVER_HTTPS = "https://adeactivate.adobe.com/adept"
 
-FILE_DEVICEKEY = "devicesalt"
-FILE_DEVICEXML = "device.xml"
-FILE_ACTIVATIONXML = "activation.xml"
-
+from setup.params import FILE_DEVICEKEY, FILE_DEVICEXML, FILE_ACTIVATIONXML 
 
 # Lists of different ADE "versions" we know about
 VAR_VER_SUPP_CONFIG_NAMES = [ "ADE 1.7.2", "ADE 2.0.1", "ADE 3.0.1", "ADE 4.0.3", "ADE 4.5.10", "ADE 4.5.11" ]

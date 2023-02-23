@@ -12,7 +12,7 @@ from os.path import exists
 VAR_MAIL = ""
 VAR_PASS = ""
 VAR_VER = 1 # None # 1 for ADE2.0.1, 2 for ADE3.0.1
-KEYPATH = "adobekey.der"
+from decrypt.params import KEYPATH
 
 #################################################################
 
@@ -38,11 +38,10 @@ def loginAndGetKey():
     global KEYPATH
 
     # acc files
-    if (not exists(FILE_ACTIVATIONXML)) or (not exists(FILE_DEVICEXML)) or (not exists(FILE_DEVICEKEY)):
+    if True:
         
         takeInput()
         print("Logging in")
-        print()
 
         createDeviceKeyFile()
 

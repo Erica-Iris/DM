@@ -16,10 +16,6 @@ from setup.libadobe import sendHTTPRequest_DL2FILE
 from setup.libadobeFulfill import buildRights, fulfill
 from setup.libpdf import patch_drm_into_pdf
 
-FILE_DEVICEKEY = "devicesalt"
-FILE_DEVICEXML = "device.xml"
-FILE_ACTIVATIONXML = "activation.xml"
-
 #######################################################################
 
 

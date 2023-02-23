@@ -6,16 +6,15 @@
 
 ## Things you need
 
-1. Adobe Account (dummy account recommended)
-2. Internet Archive Account
-3. ACSM file from the book page you borrowded from Internet Archive
-4. Python v3.x.x Installed with pip (not required for normal users)
+1. ACSM file from the book page you borrowded from Internet Archive
+2. Adobe Account (optional) (dummy account recommended)
+3. Python v3.x.x Installed with pip (not required for normal users)
 
 ---
 
 ## Guide
 
-*It only asks for login the first time if no files are misssing, so do not delete any files that are not books*
+*It uses dummy account for ADE, you can also use your own account*
 ### For Normal Users
 
 1. Download binary file according to your operating system from [Releases Section](https://github.com/bipinkrish/DeGourou/releases)
@@ -36,7 +35,7 @@
 
 1. Clone the repositary or Download zip file and extract it
 2. Install requirements using pip
-3. Run "DeGourou" file
+3. Run "DeGourou.py" file
 
 
 ```
@@ -44,6 +43,23 @@ git clone https://github.com/bipinkrish/DeGourou.git
 cd DeGourou
 pip install -r requirements.txt
 python DeGourou.py
+```
+
+---
+
+## Usage
+
+```
+usage: DeGourou [-h] [-l] [file]
+
+Download and Decrypt an encrypted PDF or EPUB file. It uses Dummy account for ADE, you can overide using --login
+
+positional arguments:
+  file         Path to the ACSM file
+
+optional arguments:
+  -h, --help   show this help message and exit
+  -l, --login  Login to your ADE account. (optional)
 ```
 
 ---
