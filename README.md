@@ -1,6 +1,6 @@
 # DeGourou (DeDRM + libgourou)
 
-### Automate the process of getting decrypted ebook from [InternetArchive](https://archive.org/) without the need for [Adobe Digital Editions](https://www.adobe.com/in/solutions/ebook/digital-editions/download.html) and [Calibre](https://calibre-ebook.com/) with DeDRM Plugins.
+#### Automate the process of getting decrypted ebook from [InternetArchive](https://archive.org/) without the need for [Adobe Digital Editions](https://www.adobe.com/in/solutions/ebook/digital-editions/download.html) and [Calibre](https://calibre-ebook.com/).
 
 ---
 
@@ -69,12 +69,17 @@ python DeGourou.py
 
 This project is based on the following projects:
 
-1. [DeDrm](https://github.com/apprenticeharper/DeDRM_tools) tools for ebooks by Apprentice Harper et al.
-2. [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools) by noDRM
-3. [libgourou](https://indefero.soutade.fr//p/libgourou/) is a free implementation of Adobe's ADEPT protocol, by Grégory Soutadé
+1. [DeDrm Tools for eBooks](https://github.com/apprenticeharper/DeDRM_tools), by Apprentice Harper et al.
+2. [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools), by noDRM
+3. [libgourou - a free implementation of Adobe's ADEPT protocol](https://indefero.soutade.fr//p/libgourou/), by Grégory Soutadé
 4. [Calibre ACSM Input plugin](https://github.com/Leseratte10/acsm-calibre-plugin), by Leseratte10
 
-## Copyright notices
+---
+
+## Copyright Notices
+
+<details>
+  <summary>ACSM Input Plugin for Calibre - Copyright (c) 2021-2023 Leseratte10</summary>
 
 ```
 ACSM Input Plugin for Calibre - Copyright (c) 2021-2023 Leseratte10
@@ -124,6 +129,5 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public License
 along with libgourou. If not, see <http://www.gnu.org/licenses/>.
-
-
 ```
+</details>

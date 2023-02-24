@@ -1,4 +1,4 @@
-from setup.login_account import loginAndGetKey
+from setup.loginAccount import loginAndGetKey
 from setup.fulfill import downloadFile
 
 from decrypt.decodePDF import decryptPDF
