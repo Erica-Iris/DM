@@ -67,6 +67,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: upload windows artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./Windows Build/DeGourou.exe
+          asset_name: DeGourou-windows.exe
+          asset_content_type: application/zip
+
       - name: upload linux artifact
         uses: actions/upload-release-asset@v1
         env:
@@ -86,13 +96,3 @@ jobs:
           asset_path: ./macOS Build/DeGourou.bin
           asset_name: DeGourou-macOS.bin
           asset_content_type: application/gzip
-
-      - name: upload windows artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Windows Build/DeGourou.exe
-          asset_name: DeGourou-windows.exe
-          asset_content_type: application/zip

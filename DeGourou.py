@@ -7,12 +7,13 @@ from decrypt.decodeEPUB import decryptEPUB
 import argparse
 from os import mkdir, remove, rename
 from os.path import exists
+from sys import exit
 
 from setup.params import FILE_DEVICEKEY, FILE_DEVICEXML, FILE_ACTIVATIONXML
 from decrypt.params import KEYPATH
 from setup.data import createDefaultFiles
 
-def main(acsmFile, login):
+def main(acsmFile, login, outputFilename):
     
     # user login
     if login:
@@ -26,6 +27,8 @@ def main(acsmFile, login):
         if not exists("account"):
             mkdir("account")
         createDefaultFiles()
+
+    print()
 
     # cheek for file existance
     if not exists(acsmFile):
@@ -49,18 +52,28 @@ def main(acsmFile, login):
         exit(1)
 
     remove(encryptedFile)
-    rename(decryptedFile, encryptedFile)
-    decryptedFile = encryptedFile
-    print(decryptedFile)
+    if outputFilename is None:
+        tempName = encryptedFile
+    else:
+        tempName = outputFilename
+    rename(decryptedFile, tempName)
+    print(tempName)
     print()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download and Decrypt an encrypted PDF or EPUB file. It uses Dummy account for ADE, you can overide using --login")
-    parser.add_argument("file", type=str, nargs='?', default="URLLink.acsm", help="Path to the ACSM file")
+    parser.add_argument("file", type=str, nargs='?', default=None, help="Path to the ACSM file")
     parser.add_argument("-l", "--login", action="store_true", help="Login to your ADE account. (optional)")
+    parser.add_argument("-o", "--output", type=str,  default=None, help="Output file name. (optional)")
     args = parser.parse_args()
-    if args.file == "URLLink.acsm" and not exists(args.file):
-        parser.print_help()
-    else:
-        main(args.file, args.login)
+
+    # check for default value
+    if args.file == None:
+        if exists("URLLink.acsm"):
+            args.file = "URLLink.acsm"
+        else:
+            parser.print_help()
+            exit(0)
+
+    main(args.file, args.login, args.output)

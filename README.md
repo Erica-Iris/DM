@@ -12,15 +12,33 @@
 
 ---
 
+## Usage
+
+```
+usage: DeGourou.xxx [-h] [-l] [-o OUTPUT] [file]
+
+Download and Decrypt an encrypted PDF or EPUB file. It uses Dummy account for ADE, you can overide using --login
+
+positional arguments:
+  file                  Path to the ACSM file
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -l, --login           Login to your ADE account. (optional)
+  -o OUTPUT             Output file name. (optional)
+```
+
+---
+
 ## Guide
 
-*It uses dummy account for ADE, you can also use your own account*
+*By default it uses dummy account for ADE, you can also use your own account*
 ### For Normal Users
 
 1. Download binary file according to your operating system from [Releases Section](https://github.com/bipinkrish/DeGourou/releases)
 2. Run the binary according to operating system
 
-    A. Windows user's can just simply run the DeGourou-windows.exe
+    A. Windows user's can just open Command Prompt and use based on the [USAGE](https://github.com/bipinkrish/DeGourou#usage)
 
     B. Linux user's need to change the file permission and then can run
 
@@ -29,7 +47,7 @@
     ./DeGourou-linux
     ```
 
-    C. MacOS user's accordingly
+    C. MacOS user's accordingly with name ```DeGourou.bin```
 
 ### For Developers
 
@@ -43,23 +61,6 @@ git clone https://github.com/bipinkrish/DeGourou.git
 cd DeGourou
 pip install -r requirements.txt
 python DeGourou.py
-```
-
----
-
-## Usage
-
-```
-usage: DeGourou [-h] [-l] [file]
-
-Download and Decrypt an encrypted PDF or EPUB file. It uses Dummy account for ADE, you can overide using --login
-
-positional arguments:
-  file         Path to the ACSM file
-
-optional arguments:
-  -h, --help   show this help message and exit
-  -l, --login  Login to your ADE account. (optional)
 ```
 
 ---

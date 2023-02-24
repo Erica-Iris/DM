@@ -58,6 +58,7 @@ def download(replyData):
     dl_start_time = int(time.time() * 1000)
     ret = sendHTTPRequest_DL2FILE(download_url, filename_tmp)
     dl_end_time = int(time.time() * 1000)
+    print()
     print("Download took %d milliseconds" % (dl_end_time - dl_start_time))
 
     if (ret != 200):
@@ -84,7 +85,7 @@ def download(replyData):
         zf = zipfile.ZipFile(filename, "a")
         zf.writestr("META-INF/rights.xml", rights_xml_str)
         zf.close()
-
+        print()
         print("File successfully fulfilled")
         return filename
     
@@ -100,6 +101,7 @@ def download(replyData):
         ret = patch_drm_into_pdf("tmp_" + filename, rights_xml_str, filename, resource)
         os.remove("tmp_" + filename)
         if (ret):
+            print()
             print("File successfully fulfilled")
             return filename
         else: 
@@ -116,14 +118,14 @@ def downloadFile(file="URLLink.acsm"):
     print("Fulfilling book '" + file + "' ...")
     success, replyData = fulfill(file)
     if (success is False):
+        print()
         print("Hey, that didn't work!")
         print(replyData)
     else: 
-        print("Downloading book '" + file + "' ...")
+        print()
+        print("Downloading book '" + file + "' with download link")
         success = download(replyData)
         if (success is False):
             print("That didn't work!")
         else:
             return success
-
-
