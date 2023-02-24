@@ -67,9 +67,63 @@ python DeGourou.py
 
 ## Credits
 
-This project is highly inspired from these projects, thanks to them
+This project is based on the following projects:
 
-1. [DeDrm](https://github.com/apprenticeharper/DeDRM_tools) tools for ebooks
-2. [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools)
-3. [libgourou](https://indefero.soutade.fr//p/libgourou/) is a free implementation of Adobe's ADEPT protocol
-4. [ACSM Input plugin + standalone](https://github.com/Leseratte10/acsm-calibre-plugin)
+1. [DeDrm](https://github.com/apprenticeharper/DeDRM_tools) tools for ebooks by Apprentice Harper et al.
+2. [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools) by noDRM
+3. [libgourou](https://indefero.soutade.fr//p/libgourou/) is a free implementation of Adobe's ADEPT protocol, by Grégory Soutadé
+4. [Calibre ACSM Input plugin](https://github.com/Leseratte10/acsm-calibre-plugin), by Leseratte10
+
+## Copyright notices
+
+```
+ACSM Input Plugin for Calibre - Copyright (c) 2021-2023 Leseratte10
+ACSM Input Plugin for Calibre / acsm-calibre-plugin
+Formerly known as "DeACSM"
+Copyright (c) 2021-2023 Leseratte10
+
+This software is based on a Python reimplementation of the C++ library 
+"libgourou" by Grégory Soutadé which is under the LGPLv3 or later 
+license (http://indefero.soutade.fr/p/libgourou/).
+
+I have no idea whether a reimplementation in another language counts 
+as "derivative use", so just in case it does, I'm putting this project 
+under the GPLv3 (which is allowed in the LGPLv3 license) to prevent any 
+licensing issues. 
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+See the "LICENSE" file for a full copy of the GNU GPL v3.
+
+========================================================================
+
+libgourou:
+Copyright 2021 Grégory Soutadé
+
+This file is part of libgourou.
+
+libgourou is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+libgourou is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public License
+along with libgourou. If not, see <http://www.gnu.org/licenses/>.
+
+
+```
