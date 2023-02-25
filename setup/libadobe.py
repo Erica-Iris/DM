@@ -257,12 +257,24 @@ def sendHTTPRequest_DL2FILE(URL, outputfile):
     if ret_code != 200:
         return ret_code
 
+    total_size = int(handler.headers.get("Content-Length", 0))
+    bytes_so_far = 0
+
+    print()
     with open(outputfile, "wb") as f:
         while True: 
             chunk = handler.read(chunksize)
             if not chunk: 
                 break
+            bytes_so_far += len(chunk)
             f.write(chunk)
+            
+            # progress bar
+            progress = float(bytes_so_far) / total_size
+            progress_bar_width = 40
+            progress_bar = ('[' + '=' * int(progress * progress_bar_width)).ljust(progress_bar_width + 1) + ']'
+            percent = round(progress * 100, 2)
+            print("Downloaded %d of %d bytes %s %0.2f%%" % (bytes_so_far, total_size, progress_bar, percent), end='\r')
 
     return 200
 
