@@ -1,5 +1,6 @@
+from charset_normalizer import md__mypyc
 from os import path, mkdir
-import requests
+from requests import Session
 import random
 import string
 import pickle 
@@ -27,7 +28,7 @@ def format_data(content_type, fields):
 	return data
 
 def login(email, password):
-	session = requests.Session()
+	session = Session()
 	session.get("https://archive.org/account/login")
 	content_type = "----WebKitFormBoundary"+"".join(random.sample(string.ascii_letters + string.digits, 16))
 
