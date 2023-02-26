@@ -6,26 +6,31 @@
 
 ## Things you need
 
-1. ACSM file from the book page you borrowded from Internet Archive
-2. Adobe Account (optional) (dummy account recommended)
-3. Python v3.x.x Installed with pip (not required for normal users)
+* ACSM file from the book page you borrowded from Internet Archive
+* Adobe Account (optional) (dummy account recommended)
+* InternetArchive Account (optional)
+* Python v3.x.x Installed with pip (not required for normal users)
 
 ---
 
 ## Usage
 
 ```
-usage: DeGourou.xxx [-h] [-l] [-o OUTPUT] [file]
+usage: DeGourou.py [-h] [-f [F]] [-u [U]] [-t [T]] [-o [O]] [-la] [-li] [-e [E]] [-p [P]] [-lo]
 
-Download and Decrypt an encrypted PDF or EPUB file. It uses Dummy account for ADE, you can overide using --login
-
-positional arguments:
-  file                  Path to the ACSM file
+Download and Decrypt an encrypted PDF or EPUB file.
 
 optional arguments:
-  -h, --help            show this help message and exit
-  -l, --login           Login to your ADE account. (optional)
-  -o OUTPUT             Output file name. (optional)
+  -h, --help  show this help message and exit
+  -f [F]      path to the ACSM file
+  -u [U]      book url from InternetArchive
+  -t [T]      book file type/format/extension for book url (defaults to PDF)
+  -o [O]      output file name
+  -la         login to your ADE account.
+  -li         login to your InternetArchive.
+  -e [E]      email/username
+  -p [P]      password
+  -lo         logout from all
 ```
 
 ---
@@ -69,10 +74,10 @@ python DeGourou.py
 
 This project is based on the following projects:
 
-1. [DeDrm Tools for eBooks](https://github.com/apprenticeharper/DeDRM_tools), by Apprentice Harper et al.
-2. [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools), by noDRM
-3. [libgourou - a free implementation of Adobe's ADEPT protocol](https://indefero.soutade.fr//p/libgourou/), by Grégory Soutadé
-4. [Calibre ACSM Input plugin](https://github.com/Leseratte10/acsm-calibre-plugin), by Leseratte10
+* [DeDrm Tools for eBooks](https://github.com/apprenticeharper/DeDRM_tools), by Apprentice Harper et al.
+* [Standalone Version of DeDrm Tools](https://github.com/noDRM/DeDRM_tools), by noDRM
+* [libgourou - a free implementation of Adobe's ADEPT protocol](https://indefero.soutade.fr//p/libgourou/), by Grégory Soutadé
+* [Calibre ACSM Input plugin](https://github.com/Leseratte10/acsm-calibre-plugin), by Leseratte10
 
 ---
 
