@@ -16,21 +16,7 @@ from decrypt.params import KEYPATH
 
 #################################################################
 
-def takeInput():
-
-    global VAR_MAIL
-    global VAR_PASS
-
-    VAR_MAIL = input("Enter Mail: ")
-    VAR_PASS = input("Enter Password: ")
-
-    if VAR_MAIL == "" or VAR_MAIL == "":
-        print("It cannot be empty")
-        print()
-        exit(1)
-
-
-def loginAndGetKey():
+def loginAndGetKey(email, password):
 
     global VAR_MAIL
     global VAR_PASS
@@ -40,31 +26,32 @@ def loginAndGetKey():
     # acc files
     if True:
         
-        takeInput()
+        VAR_MAIL = email
+        VAR_PASS = password
+        
         print("Logging in")
-
         createDeviceKeyFile()
 
         success = createDeviceFile(True, VAR_VER)
         if (success is False):
             print("Error, couldn't create device file.")
-            exit(1)
+            return
 
         success, resp = createUser(VAR_VER, None)
         if (success is False):
             print("Error, couldn't create user: %s" % resp)
-            exit(1)
+            return
 
         success, resp = signIn("AdobeID", VAR_MAIL, VAR_PASS)
             
         if (success is False):
             print("Login unsuccessful: " + resp)
-            exit(1)
+            return
 
         success, resp = activateDevice(VAR_VER, None)
         if (success is False):
             print("Couldn't activate device: " + resp)
-            exit(1)
+            return
 
         print("Authorized to account " + VAR_MAIL)
 
@@ -79,16 +66,15 @@ def loginAndGetKey():
                 success = exportAccountEncryptionKeyDER(filename)
                 if (success is False):
                     print("Couldn't export key.")
-                    exit(1)
+                    return
                 print("Successfully exported key for account " + VAR_MAIL + " to file " + filename)
 
             else:
                 print("failed")
-                exit(1)
-
+ 
         except Exception as e: 
                 print(e)
-                exit(1)
+
 
     print('All Set')
     print()
