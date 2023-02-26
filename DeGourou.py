@@ -130,8 +130,8 @@ if __name__ == "__main__":
     elif args.f == None:
         if exists("URLLink.acsm"):
             args.f = "URLLink.acsm"
-            main(args.f, args.output)
+            main(args.f, args.o)
         else: parser.print_help()
 
     else:
-        main(args.f, args.output)
+        main(args.f, args.o)
