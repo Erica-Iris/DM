@@ -51,6 +51,9 @@ def main(acsmFile, outputFilename):
     print()
 
     # decrypt
+    if encryptedFile is None:
+        print("Failed to Download, try decrypting from ACSM file")
+        return
     if encryptedFile.endswith(".pdf"):
         decryptedFile = decryptPDF(encryptedFile)
     elif encryptedFile.endswith(".epub"):

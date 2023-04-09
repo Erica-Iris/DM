@@ -127,5 +127,6 @@ def downloadFile(file="URLLink.acsm"):
         success = download(replyData)
         if (success is False):
             print("That didn't work!")
+            return None
         else:
             return success

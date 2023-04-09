@@ -69,7 +69,39 @@ python DeGourou.py
 ```
 
 ---
+## Examples
 
+
+* #### Loging in your InternetArchive account
+
+```
+.\DeGourou-windows.exe -li -e abc@email.com -p myemailpassword
+```
+* #### To download from URL (only if your are logged in):
+
+```
+.\DeGourou-windows.exe -u https://archive.org/details/identifier
+```
+
+* #### To download from ACSM file
+
+```
+.\DeGourou-windows.exe -f URLLINK.acsm
+```
+
+---
+
+## Advices
+
+* Apply for [Print Disability access](https://docs.google.com/forms/d/e/1FAIpQLScSBbT17HSQywTm-fQawOK7G4dN-QPbDWNstdfvysoKTXCjKA/viewform) for encountering minimal errors while downloading from URL
+
+* For rare books, you only able to borrow for 1hr, so to get the ACSM file from it, you have to use this below link, once after you clicked borrow
+  
+  https://archive.org/services/loans/loan/?action=media_url&format=pdf&redirect=1&identifier=XXX
+  
+  replace XXX with the identifier of the book, you can also change the format from "pdf" to "epub"
+
+---
 ## Credits
 
 This project is based on the following projects:
