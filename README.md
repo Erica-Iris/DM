@@ -13,6 +13,12 @@ _Automate the process of getting decrypted ebook from [InternetArchive](https://
 
 ---
 
+## News
+
+Now You can use this on [Replit](https://replit.com/@bipinkrish/DeGourou) without worrying about the integrity/security of this tool 
+
+---
+
 ## Usage
 
 ```
@@ -50,6 +56,12 @@ optional arguments:
     ```
     chmod 777 DeGourou-linux
     ./DeGourou-linux
+    ```
+
+    Make sure you have installed `openssl` by using the command
+
+    ```
+    sudo apt-get install libssl-dev
     ```
 
     C. MacOS user's accordingly with name ```DeGourou.bin```
