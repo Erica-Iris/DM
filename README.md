@@ -6,7 +6,7 @@ _Automate the process of getting decrypted ebook from [InternetArchive](https://
 
 ## News
 
-Now You can use this on [Replit](https://replit.com/@bipinkrish/DeGourou) without worrying about the integrity/security of this tool 
+Now You can use this on [Replit](https://replit.com/@bipinkrish/DeGourou) without worrying about the integrity/security or any other dependencies of this tool, but you need to know the [usage](#usage) so read the [examples](#examples) below
 
 ---
 
