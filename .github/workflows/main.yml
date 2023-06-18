@@ -8,7 +8,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, ubuntu-16.04, windows-latest]
       
     runs-on: ${{ matrix.os }}
     
@@ -34,6 +34,7 @@ jobs:
         with:
           script-name: DeGourou.py
           onefile: true
+          standalone: true
   
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
