@@ -4,18 +4,18 @@ _Automate the process of getting decrypted ebook from [InternetArchive](https://
 
 ---
 
+## News
+
+Now You can use this on [Replit](https://replit.com/@bipinkrish/DeGourou) without worrying about the integrity/security of this tool 
+
+---
+
 ## Things you need
 
 * ACSM file from the book page you borrowded from Internet Archive
 * Adobe Account (optional) (dummy account recommended)
 * InternetArchive Account (optional)
 * Python v3.x.x Installed with pip (not required for normal users)
-
----
-
-## News
-
-Now You can use this on [Replit](https://replit.com/@bipinkrish/DeGourou) without worrying about the integrity/security of this tool 
 
 ---
 
