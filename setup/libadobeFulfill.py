@@ -14,11 +14,9 @@ from setup.libadobe import VAR_VER_BUILD_IDS, VAR_VER_USE_DIFFERENT_NOTIFICATION
 def buildFulfillRequest(acsm):
 
     adNS = lambda tag: '{%s}%s' % ('http://ns.adobe.com/adept', tag)
-    
 
     activationxml = etree.parse(get_activation_xml_path())
     devicexml = etree.parse(get_device_path())
-
 
     user_uuid = activationxml.find("./%s/%s" % (adNS("credentials"), adNS("user"))).text
     device_uuid = activationxml.find("./%s/%s" % (adNS("activationToken"), adNS("device"))).text
@@ -35,8 +33,6 @@ def buildFulfillRequest(acsm):
         # I'll leave this code in - it loads the fingerprint from the device data instead.
         fingerprint = devicexml.find("./%s" % (adNS("fingerprint"))).text
         device_type = devicexml.find("./%s" % (adNS("deviceType"))).text
-
-
 
     version = None
     clientOS = None
@@ -101,10 +97,7 @@ def buildFulfillRequest(acsm):
         request += "</adept:targetDevice>"
         request += "</adept:fulfill>"
         return request, True
-
     
-
-
 
 def buildInitLicenseServiceRequest(authURL):
     # type: (str) -> str
@@ -166,6 +159,7 @@ def getDecryptedCert(pkcs12_b64_string = None):
     except: 
         return None
 
+
 def buildAuthRequest():
 
     activationxml = etree.parse(get_activation_xml_path())
@@ -185,7 +179,6 @@ def buildAuthRequest():
     ret += "<adept:authenticationCertificate>%s</adept:authenticationCertificate>\n" % (activationxml.find("./%s/%s" % (adNS("credentials"), adNS("authenticationCertificate"))).text)
     ret += "</adept:credentials>"
 
-
     return ret
 
 
@@ -197,11 +190,9 @@ def doOperatorAuth(operatorURL):
     if auth_req is None:
         return "Failed to create auth request"
 
-
     authURL = operatorURL
     if authURL.endswith("Fulfill"):
         authURL = authURL.replace("/Fulfill", "")
-
 
     replyData = sendRequestDocu(auth_req, authURL + "/Auth").decode("utf-8")
 
@@ -221,7 +212,6 @@ def doOperatorAuth(operatorURL):
     if (init_license_service_request is None):
         return "Creating license request failed!"
 
-
     resp = sendRequestDocu(init_license_service_request, activationURL + "/InitLicenseService").decode("utf-8")
     if "<error" in resp: 
         return "Looks like that failed: %s" % resp
@@ -229,7 +219,6 @@ def doOperatorAuth(operatorURL):
         return None
     else: 
         return "Useless response: %s" % resp
-
 
 
 def operatorAuth(operatorURL):
@@ -250,7 +239,6 @@ def operatorAuth(operatorURL):
     except:
         pass
 
-    
     ret = doOperatorAuth(operatorURL)
     if (ret is not None):
         return "doOperatorAuth error: %s" % ret
@@ -274,7 +262,6 @@ def operatorAuth(operatorURL):
     f.close()
 
     return None
-
 
 
 def buildRights(license_token_node):
@@ -488,7 +475,6 @@ def fulfill(acsm_file, do_notify = False):
     return True, replyData
 
 
-
 def updateLoanReturnData(fulfillmentResultToken, forceTestBehaviour=False):
 
     NSMAP = { "adept" : "http://ns.adobe.com/adept" }
@@ -558,8 +544,6 @@ def updateLoanReturnData(fulfillmentResultToken, forceTestBehaviour=False):
 
     return True
 
-    
-
 
 def addLoanRecordToConfigFile(new_loan_record):
 
@@ -569,7 +553,6 @@ def addLoanRecordToConfigFile(new_loan_record):
     except: 
         print("Exception while reading config file")
         return False
-
 
     error_counter = 0
     last_token = None
@@ -646,7 +629,6 @@ def addLoanRecordToConfigFile(new_loan_record):
 
 def tryReturnBook(bookData): 
 
-
     verbose_logging = False
     try: 
         import calibre_plugins.deacsm.prefs as prefs
@@ -654,7 +636,6 @@ def tryReturnBook(bookData):
         verbose_logging = deacsmprefs["detailed_logging"]
     except:
         pass
-
 
     try: 
         user = bookData["user"]
@@ -709,7 +690,6 @@ def tryReturnBook(bookData):
     else: 
         print("Invalid loan return response: %s" % (retval))
         return False, retval
-
 
 
 def performFulfillmentNotification(fulfillmentResultToken, forceOptional = False, user = None, device = None):
@@ -894,8 +874,6 @@ def performFulfillmentNotification(fulfillmentResultToken, forceOptional = False
     return False, errmsg
 
 
-
-
 def fetchLicenseServiceCertificate(licenseURL, operatorURL):
 
     # Check if we already have a cert for this URL: 
@@ -956,6 +934,3 @@ def fetchLicenseServiceCertificate(licenseURL, operatorURL):
     f.close()
 
     return True, "Done"
-
-
-

@@ -30,12 +30,10 @@ except ImportError:
 
 #@@CALIBRE_COMPAT_CODE@@
 
-
 from setup.customRSA import CustomRSA
 
-from oscrypto import keys
-from oscrypto.asymmetric import dump_certificate, dump_private_key
-
+from cryptography.hazmat.primitives.serialization.pkcs12 import load_key_and_certificates
+from cryptography.hazmat.primitives import serialization
 
 VAR_ACS_SERVER_HTTP = "http://adeactivate.adobe.com/adept"
 VAR_ACS_SERVER_HTTPS = "https://adeactivate.adobe.com/adept"
@@ -79,7 +77,6 @@ VAR_VER_USE_DIFFERENT_NOTIFICATION_XML_ORDER = 123281
 VAR_VER_DEFAULT_BUILD_ID = 78765
 
 
-
 def are_ade_version_lists_valid():
     # These five lists MUST all have the same amount of elements. 
     # Otherwise that will cause all kinds of issues. 
@@ -103,7 +100,6 @@ def are_ade_version_lists_valid():
 
 
 devkey_bytes = None
-
 
 
 def get_devkey_path():
@@ -138,6 +134,7 @@ def createDeviceKeyFile():
     f.write(devkey_bytes)
     f.close()
 
+
 def int_to_bytes(value, length, big_endian = True):
     # Helper function for Python2 only (big endian)
     # Python3 uses int.to_bytes()
@@ -150,6 +147,7 @@ def int_to_bytes(value, length, big_endian = True):
         result.reverse()
 
     return result
+
 
 def get_mac_address(): 
     mac1 = getnode()
@@ -165,9 +163,6 @@ def get_mac_address():
 
     return int_to_bytes(mac1, 6)
     
-
-
-
 
 def makeSerial(random):
     # type: (bool) -> str
@@ -206,6 +201,7 @@ def makeSerial(random):
         sha_out = binascii.hexlify(Random.get_random_bytes(20)).lower()
 
     return sha_out
+
 
 def makeFingerprint(serial):
     # type: (str) -> str
@@ -278,6 +274,7 @@ def sendHTTPRequest_DL2FILE(URL, outputfile):
 
     return 200
 
+
 def sendHTTPRequest_getSimple(URL):
     # type: (str) -> str
 
@@ -310,6 +307,7 @@ def sendHTTPRequest_getSimple(URL):
         return sendHTTPRequest_getSimple(loc)
 
     return content
+
 
 def sendPOSTHTTPRequest(URL, document, type, returnRC = False):
     # type: (str, bytes, str, bool) -> str
@@ -387,6 +385,7 @@ def sendHTTPRequest(URL):
 def sendRequestDocu(document, URL):
     # type: (str, str) -> str
     return sendPOSTHTTPRequest(URL, document.encode("utf-8"), "application/vnd.adobe.adept+xml", False)
+
 
 def sendRequestDocuRC(document, URL):
     # type: (str, str) -> str
@@ -486,10 +485,8 @@ def addNonce():
 
 def get_cert_from_pkcs12(_pkcs12, _key):
 
-    _, cert, _ = keys.parse_pkcs12(_pkcs12, _key)
-    return dump_certificate(cert, encoding="der")
-
-
+    _, cert, _ = load_key_and_certificates(_pkcs12, _key)
+    return cert.public_bytes(encoding=serialization.Encoding.DER)
 
 
 def sign_node(node):
@@ -517,28 +514,28 @@ def sign_node(node):
         return None
 
     my_pkcs12 = base64.b64decode(pkcs12)
-    my_priv_key, _, _ = keys.parse_pkcs12(my_pkcs12, base64.b64encode(devkey_bytes))
-    my_priv_key = dump_private_key(my_priv_key, None, "der")
+    my_priv_key, _, _ = load_key_and_certificates(my_pkcs12, base64.b64encode(devkey_bytes))
+    my_priv_key = my_priv_key.private_bytes(
+                    encoding=serialization.Encoding.DER,
+                    format=serialization.PrivateFormat.PKCS8,
+                    encryption_algorithm=serialization.NoEncryption()
+                )
+    
 
     # textbook RSA with that private key
-
     block = CustomRSA.encrypt_for_adobe_signature(my_priv_key, sha_hash)
     signature = base64.b64encode(block).decode()
 
     # Debug
     # print("sig is %s\n" % block.hex())
-
     return signature
 
-
- 
 
 def hash_node(node):
 
     hash_ctx = SHA.new()
     hash_node_ctx(node, hash_ctx)
     return hash_ctx
-
 
 
 ASN_NONE = 0
@@ -629,10 +626,7 @@ def hash_node_ctx(node, hash_ctx):
         # If there's child nodes, hash these as well.
         hash_node_ctx(child, hash_ctx)
 
-
-
     hash_do_append_tag(hash_ctx, ASN_END_TAG)
-
 
 
 def hash_do_append_string(hash_ctx, string):
@@ -650,6 +644,7 @@ def hash_do_append_string(hash_ctx, string):
     hash_do_append_raw_bytes(hash_ctx, [len_upper, len_lower])
     hash_do_append_raw_bytes(hash_ctx, str_bytes)
 
+
 def hash_do_append_tag(hash_ctx, tag):
     # type: (SHA.SHA1Hash, int) -> None
 
@@ -657,6 +652,7 @@ def hash_do_append_tag(hash_ctx, tag):
         return
     
     hash_do_append_raw_bytes(hash_ctx, [tag])
+
 
 def hash_do_append_raw_bytes(hash_ctx, data):
     # type: (SHA.SHA1Hash, bytes) -> None
